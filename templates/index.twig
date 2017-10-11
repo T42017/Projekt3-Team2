@@ -24,6 +24,10 @@
                 <input class="NavButton" type="text" name="search" value="">
             </form>
         </nav>
-        
+        {% for Name in names %}
+		* {{ Name.Name }} <br/>
+        {% else %}
+        No books found! :(
+        {% endfor %}
     </body>
 </html> 
