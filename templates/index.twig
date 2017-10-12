@@ -1,26 +1,9 @@
-{% include 'header.twig' %}
+{% include 'header.html' %}
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                Library
-            </a>
-        </div>
-
-        <div class="collapse navbar-collapse">
-            <div class="form-group">
-                <form class="navbar-form navbar-left" method="post">
-                    <input type="text" name="searchquery"/>
-                    <input type="submit" value="Sök"/>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
+{% include 'navbar.html' %}
 
 <div class="container">
-    <table>
+    <table class="table">
         <th>
             Title
         </th>
@@ -47,4 +30,4 @@
     </table>
 </div>
 
-{% include 'footer.twig' %}
+{% include 'footer.html' %}
