@@ -9,23 +9,40 @@
         </th>
 
         <th>
+            Release year
+        </th>
+
+        <th>
             ISBN-10
         </th>
 
-        <tr>
-            {% for book in allbooks %}
+        <th>
+            Cover
+        </th>
+
+        {% for book in allbooks %}
+            <tr>
                 <td> 
                     {{ book.title }} 
+                </td>
+
+                <td>
+                    {{ book.release_year }}
                 </td>
                 
                 <td> 
                     {{ book.isbn10 }} 
                 </td>
-            {% else %}
-                <p>
-                    Fail :|
-                </p>
-            {% endfor %}
+
+                <td>
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
+                </td>
+            </tr>
+        {% else %}
+            <p>
+                Fail :|
+            </p>
+        {% endfor %}
         </tr>
     </table>
 </div>

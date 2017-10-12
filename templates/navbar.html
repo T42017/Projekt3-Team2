@@ -8,10 +8,17 @@
 
         <div class="collapse navbar-collapse">
             <form class="nav navbar-form navbar-center" method="post">
-            	<div class="form-group">
-	                <input type="text" name="searchquery"/>
-	                <input type="submit" value="Sök"/>
-	        	</div>
+                <div class="input-group">
+                	<div class="form-group">
+    	                <input class="form-control" type="text" name="searchquery" placeholder="Search" />
+                        
+    	                <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+    	        	</div>
+                </div>
             </form>
 
             <ul class="nav navbar-nav navbar-right">
