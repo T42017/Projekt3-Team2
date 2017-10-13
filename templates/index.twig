@@ -2,28 +2,26 @@
 
 {% include 'navbar.html' %}
 
-<div class="container">
+<div class="container" style="width: 75%">
     <table class="table">
-        <th>
-            Title
-        </th>
+        <th>Title</th>
 
-        <th>
-            Release year
-        </th>
+        <th>Author</th>
 
-        <th>
-            ISBN-10
-        </th>
+        <th>Release year</th>
 
-        <th>
-            Cover
-        </th>
+        <th>ISBN-10</th>
+
+        <th>Cover</th>
 
         {% for book in allbooks %}
             <tr>
                 <td> 
                     {{ book.title }} 
+                </td>
+
+                <td>
+                    Author
                 </td>
 
                 <td>

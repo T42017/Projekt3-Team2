@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 10 okt 2017 kl 13:46
+-- Tid vid skapande: 13 okt 2017 kl 08:40
 -- Serverversion: 10.1.19-MariaDB
 -- PHP-version: 7.0.13
 
@@ -38,8 +38,8 @@ CREATE TABLE `authors` (
 --
 
 CREATE TABLE `author_writes_book` (
-  `isbn-10` varchar(10) NOT NULL,
-  `author-id` int(11) NOT NULL
+  `isbn10` varchar(10) NOT NULL,
+  `author_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -49,13 +49,22 @@ CREATE TABLE `author_writes_book` (
 --
 
 CREATE TABLE `books` (
-  `isbn-10` varchar(10) NOT NULL,
-  `isbn-13` varchar(13) NOT NULL DEFAULT 'NONE',
+  `isbn10` varchar(10) NOT NULL,
+  `isbn13` varchar(13) NOT NULL DEFAULT 'NONE',
   `title` varchar(100) DEFAULT NULL,
   `language` varchar(50) DEFAULT NULL,
   `release_year` varchar(25) DEFAULT NULL,
   `borrower_social_secuirty_number` varchar(13) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumpning av Data i tabell `books`
+--
+
+INSERT INTO `books` (`isbn10`, `isbn13`, `title`, `language`, `release_year`, `borrower_social_secuirty_number`) VALUES
+('0316029181', 'No isbn13', 'The last wish', NULL, NULL, NULL),
+('0385721676', '9780385721677', 'Oryx & Crake', 'Margaret Atwood', NULL, NULL),
+('9191919191', '', 'Harry potter', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -65,7 +74,7 @@ CREATE TABLE `books` (
 
 CREATE TABLE `history` (
   `social_security_number` varchar(13) NOT NULL,
-  `isbn-10` int(10) NOT NULL,
+  `isbn10` int(10) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -76,7 +85,7 @@ CREATE TABLE `history` (
 --
 
 CREATE TABLE `registered_books` (
-  `isbn-10` varchar(10) NOT NULL
+  `isbn10` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,6 +101,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumpning av Data i tabell `users`
+--
+
+INSERT INTO `users` (`social_security_number`, `first_name`, `last_name`) VALUES
+('980919XXXX', 'Filip', 'Laos');
+
+--
 -- Index för dumpade tabeller
 --
 
@@ -105,25 +121,25 @@ ALTER TABLE `authors`
 -- Index för tabell `author_writes_book`
 --
 ALTER TABLE `author_writes_book`
-  ADD PRIMARY KEY (`isbn-10`,`author-id`);
+  ADD PRIMARY KEY (`isbn10`,`author_id`);
 
 --
 -- Index för tabell `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`isbn-10`);
+  ADD PRIMARY KEY (`isbn10`);
 
 --
 -- Index för tabell `history`
 --
 ALTER TABLE `history`
-  ADD PRIMARY KEY (`social_security_number`,`isbn-10`,`date`);
+  ADD PRIMARY KEY (`social_security_number`,`isbn10`,`date`);
 
 --
 -- Index för tabell `registered_books`
 --
 ALTER TABLE `registered_books`
-  ADD PRIMARY KEY (`isbn-10`);
+  ADD PRIMARY KEY (`isbn10`);
 
 --
 -- Index för tabell `users`
