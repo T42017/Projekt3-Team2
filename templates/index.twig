@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+
+{% include 'navbar.html' %}
+
+<div class="container" style="width: 75%">
+    <table class="table">
+        <th>Title</th>
+
+        <th>Author</th>
+
+        <th>Release year</th>
+
+        <th>ISBN-10</th>
+
+        <th>Cover</th>
+
+        {% for book in allbooks %}
+            <tr>
+                <td> 
+                    {{ book.title }} 
+                </td>
+
+                <td>
+                    Author
+                </td>
+
+                <td>
+                    {{ book.release_year }}
+                </td>
+                
+                <td> 
+                    {{ book.isbn10 }} 
+                </td>
+
+                <td>
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
+                </td>
+            </tr>
+        {% else %}
+            <p>
+                Fail :|
+            </p>
+        {% endfor %}
+        </tr>
+    </table>
+</div>
+
+{% include 'footer.html' %}
