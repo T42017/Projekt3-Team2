@@ -1,0 +1,84 @@
+<<<<<<< HEAD
+{% include 'header.html' %}
+
+{% include 'navbar.html' %}
+
+<div class="container" style="width: 75%">
+    <table class="table">
+        <th>Title</th>
+
+        <th>Author</th>
+
+        <th>Release year</th>
+
+        <th>ISBN-10</th>
+
+        <th>Cover</th>
+
+        {% for book in allbooks %}
+            <tr>
+                <td> 
+                    {{ book.title }} 
+                </td>
+
+                <td>
+                    Author
+                </td>
+
+                <td>
+                    {{ book.release_year }}
+                </td>
+                
+                <td> 
+                    {{ book.isbn10 }} 
+                </td>
+
+                <td>
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
+                </td>
+            </tr>
+        {% else %}
+            <p>
+                Fail :|
+            </p>
+        {% endfor %}
+        </tr>
+    </table>
+</div>
+
+{% include 'footer.html' %}
+=======
+ <!DOCTYPE html>
+<html>
+    <head>
+        <!-- BOOTSTRAP CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- INDEX CSS -->
+        <link rel="stylesheet" href="templates/indexstyling.css">
+        
+        <!-- JQUERY CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <!-- JAVASCRIPT COMPILER CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <title>Page Title</title>
+    </head>
+    <body>
+        <h1>Find and Loan Books</h1>
+        <nav class="pull-left">
+            <button>Topics</button>
+            <button>Genres</button>
+            <form>
+                <input class="NavButton" type="text" name="search" value="">
+            </form>
+        </nav>
+        {% for Name in names %}
+		* {{ Name.Name }} <br/>
+        {% else %}
+        Search returned nothing
+        {% endfor %}
+    </body>
+</html> 
+>>>>>>> origin/Feature-Search
