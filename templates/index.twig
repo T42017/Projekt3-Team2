@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
         <!-- INDEX CSS -->
-        <link rel="stylesheet" href="indexstyling.css">
+        <link rel="stylesheet" href="/biblioteksida/templates/indexstyling.css">
         
         <!-- JQUERY CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,8 +20,8 @@
         <nav class="pull-left">
             <button>Topics</button>
             <button>Genres</button>
-            <form>
-                <input class="NavButton" type="text" name="search" value="">
+            <form action="search" method="get">
+                <input class="NavButton" type="text" name="s" value="">
             </form>
         </nav>
         {% for Name in names %}
