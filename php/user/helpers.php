@@ -1,14 +1,34 @@
 <?php
+function is_isbn($value) {
+	if (!is_string($value)) {
+		return false;
+	}
+
+	$value = str_replace("-", "", $value);
+
+	if (strlen($value) !== 10 && strlen($value) !== 13) {
+		return false;
+	}
+
+	for ($i = 0; $i < strlen($value); $i++) {
+		if (!is_numeric($value[$i]) && !($value[$i] === "X")) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
 function isbn10_from_isbn13($isbn13) {
 	if (!is_string($isbn13)) {
-		return "Is not string, yo.";
+		return "NONE";
 	}
 
 	$isbn13 = trim($isbn13);
 	$isbn13 = str_replace("-", "", $isbn13);
 
 	if (strlen($isbn13) !== 13) {
-		return "String was of wrong length.";
+		return "NONE";
 	}
 
 	$isbn10 = substr($isbn13, 3, -1);
@@ -37,7 +57,7 @@ function isbn10_from_isbn13($isbn13) {
 
 function isbn13_from_isbn10($isbn10) {
 	if (!is_string($isbn10)) {
-		return "Is not string.";
+		return "NONE";
 	}
 
 	$isbn10 = trim($isbn10);
@@ -47,7 +67,7 @@ function isbn13_from_isbn10($isbn10) {
 	$isbn13 = "978{$isbn}";
 
 	if (strlen($isbn13) != 12) {
-		return "Wrong amount of characters.";
+		return "NONE";
 	}
 
 	$digits_string = str_split($isbn13);
