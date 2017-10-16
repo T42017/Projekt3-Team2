@@ -10,20 +10,39 @@
 
 	<input type="text" name="isbn" placeholder="Enter isbn" required />
 	<br />
-	
+
 	<button type="submit">
-		Add
+		Find
 	</button>
 </form>
 
-{% for arr in array %}
-	<div>
-		{{ arr }}
-	</div>
+{% if book %}
+
+	<form action="addbooktodatabase.php" method="post">
+		
+		{% for key, property in book %}
+
+			<label for="{{ key }}">
+				{{ key }}
+			</label>
+			<br />
+
+			<input type="text" name="{{ key }}" value="{{ property }}" />
+			<br />
+
+		{% endfor %}
+
+		<button type="submit">
+			Add
+		</button>
+	</form>
+
 {% else %}
+
 	<div>
 		Fail :|
 	</div>
-{% endfor %}
+
+{% endif %}
 
 {% include 'footer.html' %}

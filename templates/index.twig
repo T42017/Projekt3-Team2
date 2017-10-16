@@ -15,6 +15,7 @@
         <th>Cover</th>
 
         {% for book in names %}
+
             <tr>
                 <td> 
                     {{ book.title }} 
@@ -33,14 +34,18 @@
                 </td>
 
                 <td>
-                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-M.jpg">
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
                 </td>
             </tr>
+
         {% else %}
+
             <p>
                 Fail :|
             </p>
+
         {% endfor %}
+        
         </tr>
     </table>
 </div>

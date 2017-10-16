@@ -19,6 +19,16 @@ function is_isbn($value) {
 	return true;
 }
 
+function is_isbn10($value) {
+	$value = str_replace("-", "", $value);
+	return is_isbn($value) && strlen($value) === 10;
+}
+
+function is_isbn13($value) {
+	$value = str_replace("-", "", $value);
+	return is_isbn($value) && strlen($value) === 13;
+}
+
 function isbn10_from_isbn13($isbn13) {
 	if (!is_string($isbn13)) {
 		return "NONE";
