@@ -4,5 +4,5 @@ RewriteBase /world/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /biblioteksida/php/index.php [L]
+RewriteRule . /biblioteksida/php/user/index.php [L]
 </IfModule>

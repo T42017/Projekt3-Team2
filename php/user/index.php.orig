@@ -7,7 +7,13 @@
 	$loader = new Twig_Loader_Filesystem(path . '/templates');
 	$twig = new Twig_Environment($loader, array('cache' => path . '/cache', 'debug' => true));
 	
+<<<<<<< HEAD
+    $libraryPDO = new PDO('mysql:host=localhost;dbname=library;charset=utf8mb4', 'root', '');
+
     if(isset($_GET['s']))
+=======
+    if(isset($_GET['search']))
+>>>>>>> 02920a12239872c250daa03f8b9ae7bb90b192e5
 	{
         $search = urldecode($_GET['s']);
         //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
