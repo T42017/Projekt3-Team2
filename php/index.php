@@ -7,9 +7,9 @@
 	
     $libraryPDO = new PDO('mysql:host=localhost;dbname=library;charset=utf8mb4', 'root', '');
 
-    if(isset($_GET['search']))
+    if(isset($_GET['s']))
 	{
-        $search = urldecode($_GET['search']);
+        $search = urldecode($_GET['s']);
         //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
 		$stmt = $libraryPDO->prepare("SELECT * FROM books WHERE title = :name ");
         $specialparam = '%'.$search;
