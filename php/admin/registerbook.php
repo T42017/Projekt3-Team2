@@ -61,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		}
 	}
 
-	echo $twig->render('registerbook.html', array(
+	echo $twig->render('registerbook.twig', array(
 		"book" => $book
 	));
 }
 else
 {
-	echo $twig->render('registerbook.html');
+	echo $twig->render('registerbook.twig');
 }
 ?>
