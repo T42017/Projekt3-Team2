@@ -23,7 +23,48 @@
 
         {% for book in names %}
 
-            <tr>
+            <div>
+                <div>
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
+                </div>
+
+                <div>
+                    <p>
+                        <strong>
+                            {{ book.title }}
+                        </strong>
+                    </p>
+
+                    <p>
+                        {# {{ book.author }} #}
+                        <i>
+                            Author's name here
+                        </i>
+                    </p>
+
+                    <p>
+                        {{ book.release_year }}
+                    </p>
+
+                    <p>
+                        <span data-toggle="tooltip" data-placement="right" title="ISBN-10">
+                            {{ book.isbn10 }}
+                        </span> 
+                        <br />
+
+                        <span data-toggle="tooltip" data-placement="right" title="ISBN-13">
+                            {{ book.isbn13 }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+            {# <tr>
                 <td> 
                     {{ book.title }} 
                 </td>
@@ -50,7 +91,7 @@
                 <td>
                     <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
                 </td>
-            </tr>
+            </tr> #}
 
         {% else %}
 
