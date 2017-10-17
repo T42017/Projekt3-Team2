@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 		if ($obj && $obj["xsearch"] && $obj["xsearch"]["list"] && is_array($obj["xsearch"]["list"]) && $search = $obj["xsearch"]["list"][0]) // disgusting, but must be done somehow
 		{
-			$book["title"] = $search["title"];
-			$book["creator"] = $search["creator"];
-			$book["language"] = $search["language"];
-			$book["release_year"] = $search["date"];
+			$book["Title"] = $search["title"] ? $search["title"] : NULL;
+			$book["Author"] = $search["creator"] ? $search["creator"] : NULL;
+			$book["Language"] = $search["language"] ? $search["language"] : NULL;
+			$book["Release Year"] = $search["date"] ? $search["date"] : NULL;
 
 			if (is_array($search["isbn"]))
 			{
@@ -35,38 +35,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
 					if (strlen($search["isbn"][0]) == 10)
 					{
-						$book["isbn10"] = $search["isbn"];
-						$book["isbn13"] = isbn13_from_isbn10($search["isbn"]);
+						$book["ISBN-10"] = $search["isbn"];
+						$book["ISBN-13"] = isbn13_from_isbn10($search["isbn"]);
 					}
 					else
 					{
-						$book["isbn10"] = isbn10_from_isbn13($search["isbn"]);
-						$book["isbn13"] = $search["isbn"];
+						$book["ISBN-10"] = isbn10_from_isbn13($search["isbn"]);
+						$book["ISBN-13"] = $search["isbn"];
 					}
 				}
 			}
-			else
+			else // assume every entry has an isbn
 			{
 				if (strlen($search["isbn"]) === 10)
 				{
-					$book["isbn10"] = $search["isbn"];
-					$book["isbn13"] = isbn13_from_isbn10($search["isbn"]);
+					$book["ISBN-10"] = $search["isbn"];
+					$book["ISBN-13"] = isbn13_from_isbn10($search["isbn"]);
 				}
 				else
 				{
-					$book["isbn13"] = $search["isbn"];
-					$book["isbn10"] = isbn10_from_isbn13($search["isbn"]);
+					$book["ISBN-13"] = $search["isbn"];
+					$book["ISBN-10"] = isbn10_from_isbn13($search["isbn"]);
 				}
 			}
 		}
 	}
 
 	echo $twig->render('registerbook.twig', array(
-		"book" => $book
+		"book" => $book,
+		"message" => "Found book"
 	));
 }
 else
 {
-	echo $twig->render('registerbook.twig');
+	echo $twig->render('registerbook.twig', array(
+		"message" => "No message"
+	));
 }
 ?>
