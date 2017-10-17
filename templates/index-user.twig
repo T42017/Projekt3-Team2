@@ -3,6 +3,13 @@
 {% include 'navbar.html' %}
 
 <div class="container" style="width: 75%">
+    <div class="alert alert-info alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+        </a>
+        Welcome! You are visiting the page as a <strong>user</strong>.
+    </div>
+
     <table class="table">
         <th>Title</th>
 
@@ -30,8 +37,14 @@
                 </td>
                 
                 <td> 
-                    {{ book.isbn10 }} <br />
-                    {{ book.isbn13 }}
+                    <span data-toggle="tooltip" data-placement="right" title="ISBN-10">
+                        {{ book.isbn10 }}
+                    </span> 
+                    <br />
+
+                    <span data-toggle="tooltip" data-placement="right" title="ISBN-13">
+                        {{ book.isbn13 }}
+                    </span>
                 </td>
 
                 <td>

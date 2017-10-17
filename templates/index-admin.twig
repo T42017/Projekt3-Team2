@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+
+{% include 'navbar.html' %}
+
+<div class="container" style="width: 75%">
+    <div class="alert alert-info alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            &times;
+        </a>
+        Welcome! You are visiting the page as an <strong>admin</strong>.
+    </div>
+    
+    <table class="table">
+        <th>Title</th>
+
+        <th>Author</th>
+
+        <th>Release year</th>
+
+        <th>ISBN</th>
+
+        <th>Cover</th>
+
+        {% for book in names %}
+
+            <tr>
+                <td> 
+                    {{ book.title }} 
+                </td>
+
+                <td>
+                    {{book.author}}
+                </td>
+
+                <td>
+                    {{ book.release_year }}
+                </td>
+                
+                <td> 
+                    <span data-toggle="tooltip" data-placement="right" title="ISBN-10">
+                        {{ book.isbn10 }}
+                    </span> 
+                    <br />
+
+                    <span data-toggle="tooltip" data-placement="right" title="ISBN-13">
+                        {{ book.isbn13 }}
+                    </span>
+                </td>
+
+                <td>
+                    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn10 }}-S.jpg">
+                </td>
+            </tr>
+
+        {% else %}
+
+            <p>
+                Fail :|
+            </p>
+
+        {% endfor %}
+        
+        </tr>
+    </table>
+
+    <a href="registerbook.php">
+        Register book
+    </a>
+</div>
+
+{% include 'footer.html' %}

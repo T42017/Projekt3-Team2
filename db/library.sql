@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 13 okt 2017 kl 08:40
+-- Tid vid skapande: 17 okt 2017 kl 13:28
 -- Serverversion: 10.1.19-MariaDB
 -- PHP-version: 7.0.13
 
@@ -63,7 +63,15 @@ CREATE TABLE `books` (
 
 INSERT INTO `books` (`isbn10`, `isbn13`, `title`, `language`, `release_year`, `borrower_social_secuirty_number`) VALUES
 ('0316029181', 'No isbn13', 'The last wish', NULL, NULL, NULL),
+('0349004064', '9780349004068', 'Oryx and Crake', 'eng', '2013', NULL),
 ('0385721676', '9780385721677', 'Oryx & Crake', 'Margaret Atwood', NULL, NULL),
+('1444707868', '9781444707861', 'It', 'eng', '2011', NULL),
+('9100146072', '9789100146078', 'Lida', 'swe', '2015', NULL),
+('9129691427', '9789129691429', 'En sekund i taget', 'swe', '2014', NULL),
+('9137149261', '9789137149264', 'Viskande skuggor', 'swe', '', NULL),
+('9175036460', '9789175036465', 'Störst av allt', 'swe', '2017', NULL),
+('9175792001', '9789175792002', 'Sjuka själar', 'swe', '2016', NULL),
+('917579246X', '9789175792460', 'I det sista regnet', 'swe', '', NULL),
 ('9191919191', '', 'Harry potter', NULL, NULL, NULL);
 
 -- --------------------------------------------------------

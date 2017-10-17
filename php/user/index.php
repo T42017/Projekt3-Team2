@@ -25,7 +25,7 @@
 	else
 	{
 		$stmt = $db->query('SELECT * FROM books');
-		echo $twig->render('index.twig', array(
+		echo $twig->render('index-user.twig', array(
 			'names' => $stmt->fetchAll()
 		));
 	}
