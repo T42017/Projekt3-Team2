@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		exit;
 	}
 
-	$stmt = $db->prepare("INSERT INTO books (isbn10, isbn13, title, language, release_year) VALUES(:isbn10, :isbn13, :title, :language, :release_year);");
+	$query = "INSERT INTO books (isbn10, isbn13, title, language, release_year) VALUES(:isbn10, :isbn13, :title, :language, :release_year);";
+	$stmt = $db->prepare($query);
 	$stmt->execute(array(
 		":isbn10" => $isbn10,
 		":isbn13" => $isbn13,
@@ -25,7 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		":language" => $language,
 		":release_year" => $release_year
 	));
-	header("Location: registerbook.php");
+	if ($stmt)
+	{
+		header('Location: registerbook.php');
+	}
+	else
+	{
+		header("Location: index.php");
+	}
 }
 
 ?>
