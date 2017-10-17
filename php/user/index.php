@@ -13,73 +13,43 @@
 
     function RenderDefault()
     {
-        global $db, $twig;
+        global $twig;
         
-        if(isset($_GET['s']))
-        {
-            $search = urldecode($_GET['s']);
-            //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
-            $stmt = $db->prepare("SELECT * FROM books WHERE title = :name ");
-            $specialparam = '%'.$search;
-
-            $stmt->bindParam(':name', $search); 
-            $stmt->execute();
-
-            echo $twig->render('index.twig', 
-            array(
-                'names' => $stmt->fetchAll(),
-                ));
-        }
-        else
-        {
-            $stmt = $db->query('SELECT * FROM books');
-            echo $twig->render('index.twig', array(
-                'names' => $stmt->fetchAll()
-            ));
-        }
+        echo $twig->render('index.twig');
+        
+        //render default page
     }
 
     if(!empty($parameter))
     {
         switch($parameter)
         {
-            case 'search':
+            case strpos($parameter, "search") === 0:
                 if(isset($_GET['s']))
-        {
-            $search = urldecode($_GET['s']);
-            //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
-            $stmt = $db->prepare("SELECT * FROM books WHERE title = :name ");
-            $specialparam = '%'.$search;
+                {
+                    $search = urldecode($_GET['s']);
+                    $stmt = $db->prepare("SELECT * FROM books WHERE title = :name ");
+                    $specialparam = '%'.$search;
 
-            $stmt->bindParam(':name', $search); 
-            $stmt->execute();
+                    $stmt->bindParam(':name', $search); 
+                    $stmt->execute();
 
-            echo $twig->render('index.twig', 
-            array(
-                'names' => $stmt->fetchAll(),
-                ));
-        }
-        else
-        {
-            $stmt = $db->query('SELECT * FROM books');
-            echo $twig->render('index.twig', array(
-                'names' => $stmt->fetchAll()
-            ));
-        }
-                echo "search";
-                exit;
+                    echo $twig->render('index.twig', array('names' => $stmt->fetchAll()));
+                }
+                else
+                {
+                    echo $twig->render('index.twig');
+                }
                 break;
+            
             case 'borrow':
-                $id = GetPermaLink(4);
-                echo "borrow";
-                // if ulr like .. /admin/delete/{id}
+                //render borrow page
                 break;
             case 'history':
-                echo "history";
+                //render user history page
                 break;
             default:
-                //output 404 not found or default template..
-                RenderDefault();
+                //output 404
                 break;
         }
     }

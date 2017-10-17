@@ -13,30 +13,9 @@
 
     function RenderDefault()
     {
-        global $db, $twig;
-        
-        if(isset($_GET['s']))
-        {
-            $search = urldecode($_GET['s']);
-            //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
-            $stmt = $db->prepare("SELECT * FROM books WHERE title = :name ");
-            $specialparam = '%'.$search;
-
-            $stmt->bindParam(':name', $search); 
-            $stmt->execute();
-
-            echo $twig->render('index.twig', 
-            array(
-                'names' => $stmt->fetchAll(),
-                ));
-        }
-        else
-        {
-            $stmt = $db->query('SELECT * FROM books');
-            echo $twig->render('index.twig', array(
-                'names' => $stmt->fetchAll()
-            ));
-        }
+        global $twig;
+        echo $twig->render('index.twig');
+        //render default page / home page..
     }
 
 
@@ -45,25 +24,22 @@
         switch($p)
         {
             case 'registerbooks':
-                //render Pontus' add page
+                //render register book page
                 break;
             case 'removebooks':
-                $id = GetPermaLink(4);
-                // if ulr like .. /admin/delete/{id}
-                echo "remove";
+                //render remove book page
                 break;
                 
             case 'borrowedbooks':
-                echo "borrowed";
+                //register borrowed books page
                 break;
                 
             case 'availablebooks':
-                echo "available";
+                //render available books page
                 break;
                 
             default:
-                //output 404 not found or default template..
-                RenderDefault();
+                //output 404
                 break;
         }
     }
