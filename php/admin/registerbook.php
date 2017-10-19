@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 		if ($obj && $obj["xsearch"] && $obj["xsearch"]["list"] && is_array($obj["xsearch"]["list"]) && $search = $obj["xsearch"]["list"][0]) // disgusting, but must be done somehow
 		{
-			$book["Title"] = $search["title"] ? $search["title"] : NULL;
-			$book["Author"] = $search["creator"] ? $search["creator"] : NULL;
-			$book["Language"] = $search["language"] ? $search["language"] : NULL;
-			$book["Release Year"] = $search["date"] ? $search["date"] : NULL;
+			$book["Title"] = isset($search["title"]) ? $search["title"] : NULL;
+			$book["Author"] = isset($search["creator"]) ? $search["creator"] : NULL;
+			$book["Language"] = isset($search["language"]) ? $search["language"] : NULL;
+			$book["Released"] = isset($search["date"]) ? $search["date"] : NULL;
 
 			if (is_array($search["isbn"]))
 			{

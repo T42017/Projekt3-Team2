@@ -24,14 +24,14 @@
 
 			<form action="addbooktodatabase.php" method="post">
 				
-				{% for key, property in book %}
+				{% for key, value in book %}
 
 					<div class="form-group">
 						<label for="{{ key }}">
 							{{ key }}
 						</label>
 
-						<input class="form-control" type="text" name="{{ key }}" value="{{ property }}" readonly />
+						<input class="form-control" type="text" name="{{ key }}" value="{{ value }}" readonly />
 					</div>
 
 				{% endfor %}
