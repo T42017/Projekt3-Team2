@@ -1,0 +1,19 @@
+{% include 'header.html' %}
+
+{% include 'navbar.html' %}
+
+<div class="container" style="width: 75%">
+    {% for item in title %}
+    <tr>
+        <td>
+            <img class="" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn10 }}-M.jpg">
+        </td>
+    </tr>
+    {% endfor %}
+    <form style="margin-top:10px" method="post">
+        <input placeholder="SSN" name="ssn"></input>
+        <button type="Submit">Submit</button>
+    </form>
+</div>
+
+{% include 'footer.html' %}
