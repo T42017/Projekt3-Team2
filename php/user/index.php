@@ -30,7 +30,6 @@
                     $search = urldecode($_GET['s']);
                     $SearchStmt = $db->prepare("SELECT * FROM books WHERE title LIKE :name ");
                     $specialparam = '%'.$search.'%';
-                    var_dump($specialparam);
 
                     $SearchStmt->bindParam(':name', $specialparam); 
                     $SearchStmt->execute();
@@ -64,8 +63,10 @@
                         
                         $BorrowSsn = htmlspecialchars($_POST['ssn']);
                         
-                        $BorrowStmt->bindParam("ssn", $BorrowSsn);
-                        $BorrowStmt->bindParam("bookisbn", $bookisbn[0]["isbn10"]);
+                        $BorrowStmt->bindParam(":ssn", $BorrowSsn);
+                        $BorrowStmt->bindParam(":bookisbn", $bookisbn[0]["isbn10"]);
+                        
+                        var_dump($bookisbn);
                 
                         $BorrowStmt->execute();
                         
