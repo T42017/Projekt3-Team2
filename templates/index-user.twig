@@ -25,7 +25,7 @@
 
             <tr>
                 <td> 
-                    {{ book.title }} 
+                    <a href="borrowbook?title={{book.title}}">{{ book.title }}</a>
                 </td>
 
                 <td>
@@ -65,3 +65,5 @@
 </div>
 
 {% include 'footer.html' %}
+
+ON Books_genre.bookid = books.id AND 

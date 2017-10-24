@@ -3,30 +3,47 @@
     
 	require path . '/vendor/autoload.php';
 	require 'dbconnection.php';
+	require 'functions.php';
 
 	$loader = new Twig_Loader_Filesystem(path . '/templates');
 	$twig = new Twig_Environment($loader, array('cache' => path . '/cache', 'debug' => true));
 	
-    if(isset($_GET['s']))
-	{
-        $search = urldecode($_GET['s']);
-        //$param = htmlspecialchars(str_replace('+', ' ', $_GET['search']));
-		$stmt = $db->prepare("SELECT * FROM books WHERE title = :name ");
-        $specialparam = '%'.$search;
-        
-		$stmt->bindParam(':name', $search); 
-		$stmt->execute();
-        
-        echo $twig->render('index.twig', 
-		array(
-			'names' => $stmt->fetchAll(),
-			));
-	}
-	else
-	{
-		$stmt = $db->query('SELECT * FROM books ORDER BY title ASC');
-		echo $twig->render('index-admin.twig', array(
-			'names' => $stmt->fetchAll()
-		));
-	}
+    $p = GetPermaLink(3);
+
+
+    function RenderDefault()
+    {
+        global $twig;
+        echo $twig->render('index.twig');
+        //render default page / home page..
+    }
+
+
+    if(!empty($p))
+    {
+        switch($p)
+        {
+            case 'registerbooks':
+                //render register book page
+                break;
+            case 'removebooks':
+                //render remove book page
+                break;
+                
+            case 'borrowedbooks':
+                //register borrowed books page
+                break;
+                
+            case 'availablebooks':
+                //render available books page
+                break;
+                
+            default:
+                //output 404
+                break;
+        }
+    }
+
+    RenderDefault();
+
 ?>
