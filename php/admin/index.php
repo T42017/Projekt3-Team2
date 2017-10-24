@@ -24,7 +24,7 @@
 	}
 	else
 	{
-		$stmt = $db->query('SELECT * FROM books');
+		$stmt = $db->query('SELECT * FROM books ORDER BY title ASC');
 		echo $twig->render('index-admin.twig', array(
 			'names' => $stmt->fetchAll()
 		));
